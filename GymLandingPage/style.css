@@ -1,0 +1,87 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+}
+
+h1,
+p {
+  margin: 0;
+  padding: 0;
+}
+.Hero-section {
+  background-color: #f2ff00;
+  width: 100%;
+  min-height: 520px;
+}
+
+.hero-container {
+  width: 90%;
+  margin: 0 auto;
+  min-height: 520px;
+}
+
+
+.left-Hero-section,
+.right-Hero-section {
+  float: left;
+  width: 50%;
+  min-height: 520px; /*check this*/
+}
+
+.right-Hero-section {
+  text-align: center;
+  background-color: #303213;
+}
+.left-Hero-section {
+  background-color: #4812a5;
+  text-align: left;
+}
+
+.left-Hero-section h1 {
+  text-align: left;
+  font-size: 50px;
+  width: 80%;
+  color: #303213;
+  margin: 4% 10%;
+}
+
+.left-Hero-section p {
+  text-align: left;
+  font-size: 25px;
+  color: #303213;
+  background-color: #f2ff00;
+  margin: 4% 10%;
+  letter-spacing: 0.1em;
+}
+.right-Hero-section img {
+  width: 70%;
+  height: auto;
+  padding: 4% 0;
+  border-radius: 10%;
+  display: inline-block;
+}
+#start-journey-button,
+#learn-more-button {
+  padding: 3% 4%;
+  font-size: 100%;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+#start-journey-button {
+  margin: 4% 10%;
+  background-color: #000000;
+  color: #ffffff;
+  border: none;
+  margin-right: 3%;
+}
+
+#learn-more-button {
+  width: 30%;
+  background-color: #ffffff;
+  color: #000000;
+  background: #fff;
+  border: 0.2em solid #636363;
+}
