@@ -1,0 +1,250 @@
+body {
+  font-family: Exo, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+}
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 13vh;
+  background-color: rgb(245, 243, 255);
+  border-bottom: 1px solid rgb(255, 1, 247);
+}
+.navbar .logo {
+  width: 50%;
+  display: flex;
+  align-items: center;
+}
+.navbar .logo .icon-frame {
+  width: 40px;
+  height: 40px;
+  margin: 10px;
+  background-color: rgb(96, 47, 96);
+  border-radius: 10px;
+}
+
+.navbar .logo p {
+  font-size: 24px;
+  color: rgb(40, 40, 40);
+  margin-left: 10px;
+  font-weight: bold;
+}
+.navbar .logo i {
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  color: rgb(255, 254, 254);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.navbar .nav-links {
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 30px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: rgb(40, 40, 40);
+  padding-bottom: 8px;
+  border-bottom: none;
+  transition: color 0.3s linear;
+  position: relative;
+}
+
+.nav-links a:hover {
+  color: #8b5cf6;
+}
+
+/* navbar underline effect */
+.nav-links a::after{
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  background: #8b5cf6;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 260ms cubic-bezier(.2,.8,.2,1);
+  border-radius: 4px;
+}
+.nav-links a:hover::after{
+  transform: scaleX(1);
+}
+
+/* Home Section */
+
+.container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  gap:20px;
+}
+
+.home-drawn-img-frame{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: #bcbcbc 2px solid;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.home-drawn-img-frame img {
+    width: 90%;
+    height: 90%;
+    border-radius: 10px;
+}
+.home-content {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    color: rgb(40, 40, 40);
+    padding: 20px 0px;
+}
+
+.features ul {
+    width:60%;    
+    display: flex;
+    flex-direction: row;
+    color:white;
+    justify-content:space-between;
+    margin-bottom: 20px;
+}
+
+.features ul li{
+  color: #f6f6fb;
+  background-color:rgb(166, 132, 255);
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.home-content h1{
+  font-size: 56px;
+  margin: 6px 0 14px 0;
+  color: #333;
+  line-height: 1.02;
+  font-weight: 800;
+}
+
+.home-content h1 .highlight{
+  color: #8b5cf6;
+  margin-left: 6px;
+}
+
+.home-content .intro p{
+  font-size: 19px;
+  margin-top: 10px;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Price section */
+
+.price-row{
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.price-current{
+  font-size: 38px;
+  font-weight: bold;
+  color: #333;
+}
+
+.price-old{
+  font-size: 24px;
+  color: #6b6b6b;
+  text-decoration: line-through;
+  margin: 0;
+}
+
+.price-save{
+  background: #ffe9e9;
+  color: #c62828;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.payment-text{
+  color: #333;
+}
+
+.home-content-actions{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 20%;
+}
+
+.home-content-actions button{
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0px;
+    background-color: rgb(166, 132, 255);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.home-content-actions button:first-child{
+    color:rgb(166, 132, 255);
+    color:white;
+}
+
+.home-content-actions button:last-child{
+    background:white;
+    color:black;
+    border : 2px solid rgb(131, 131, 131);
+}
+
+.home-content-actions button:hover{
+  transform: scale(1.02);
+}
+
+.home-content-actions img{
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    vertical-align: middle;
+    color: white;
+    padding :10px;
+}
