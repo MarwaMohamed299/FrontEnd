@@ -234,6 +234,7 @@ li {
   border-radius: 30px;
   font-size: 20px;
   cursor: pointer;
+  transition: transform 0.2s;
 }
 
 .home-content-actions button:first-child {
@@ -906,7 +907,7 @@ footer {
 }
 
 .lower-footer .right p {
-  font-size: 14px;
+  font-size: 17px;
   color: #ffffff;
 }
 
