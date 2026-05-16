@@ -570,20 +570,6 @@ li {
   padding-right: 8px;
 }
 
-/* .reviews-list::-webkit-scrollbar {
-  width: 8px;
-}
-
-.reviews-list::-webkit-scrollbar-track {
-  background: #e5e7eb;
-  border-radius: 999px;
-} */
-
-/* .reviews-list::-webkit-scrollbar-thumb {
-  background: #b9bec7;
-  border-radius: 999px;
-} */
-
 .review-card {
   background: #ffffff;
   border: 1px solid #d9dde3;
@@ -680,6 +666,7 @@ li {
   border: none;
 }
 
+
 .related-products-items {
   width: 90%;
   height: 400px;
@@ -687,14 +674,14 @@ li {
   display: flex;
   flex-direction: row;
   gap: 20px;
-  justify-content: center;
+  justify-content: space-around;
   box-sizing: border-box;
 }
 
 .product-card {
   position: relative;
-  height: 80%;
-  width: 240px;
+  height: 84%;
+  width: 22%;
   background: #ffffff;
   border: 1px solid #d9dde3;
   border-radius: 14px;
@@ -937,11 +924,109 @@ footer {
 
 /* related products section */
 @media (max-width: 1000px) {
+
+  .navbar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: auto;
+  }
+
+  .nav-links {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+    gap: 20px;
+  }
+
+  .home {
+    margin-top: 20px;
+    flex-direction: column;
+    height: auto;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .home-drawn-img-frame,
+  .home-content {
+    width: 80%;
+    margin-bottom: 30px;
+  }
+
+  .features ul {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+
+  .compare-table {
+    display: block;
+    width: 94%;
+    margin: 24px auto;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+  }
+
+  .compare-table th,
+  .compare-table td {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+
+  .compare-table th {
+    height: auto;
+    min-width: 160px;
+  }
+
+  .compare-table th:first-child,
+  .compare-table td:first-child {
+    min-width: 170px;
+    text-align: left;
+  }
+
   .reviews-container {
     grid-template-columns: 1fr;
   }
 
   .reviews-rating-panel {
     position: static;
+  }
+
+  .related-products-items {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .related-products-items .product-card {
+    width: 90%;
+    height: auto;
+    margin: 0 auto 20px auto;
+  }
+
+  .footer .upper-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+    width: 900px;
+  }
+
+  .footer .lower-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
   }
 }
