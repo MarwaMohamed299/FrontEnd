@@ -1,37 +1,238 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
-
-</head>
-<body>
-    <div class="sidebar">
-        <div class="header">
-            <div class="logo">
-                <i class="fas fa-coins"></i>
-            </div>
-            <div class="header-text">
-                <h1>مدبّر</h1>
-                <p>إدارة أموالك بذكاء</p>
-            </div>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <section class="sidebar">
+      <div class="header">
+        <div class="logo">
+          <i class="fas fa-coins"></i>
         </div>
-        <ul class="nav-links">
-            <li><i class="fas fa-home"></i> الصفحة الرئيسية</li>
-            <li><i class="fas fa-exchange-alt"></i> المعاملات</li>
-            <li><i class="fas fa-wallet"></i> الميزانيات</li>
-            <li><i class="fas fa-piggy-bank"></i> المدخرات</li>
-            <li><i class="fas fa-file-invoice"></i> الفواتير</li>
-        </ul>
-        <p>إجراءات سريعة</p>
-        <ul class="quick-actions">
-            <li><i class="fas fa-plus"></i> إضافة معاملة</li>
-            <li><i class="fas fa-wallet"></i> إنشاء ميزانية</li>
-            <li><i class="fas fa-piggy-bank"></i> تتبع المدخرات</li>
-        </ul>
-    </div>
-</body>
+        <div class="header-text">
+          <h1>مدبّر</h1>
+          <span>إدارة أموالك بذكاء</span>
+        </div>
+      </div>
+      <ul class="nav-links">
+        <li><i class="fas fa-home"></i> الصفحة الرئيسية</li>
+        <li><i class="fas fa-exchange-alt"></i> المعاملات</li>
+        <li><i class="fas fa-wallet"></i> الميزانيات</li>
+        <li><i class="fas fa-piggy-bank"></i> المدخرات</li>
+        <li><i class="fas fa-file-invoice"></i> الفواتير</li>
+      </ul>
+      <p>إجراءات سريعة</p>
+      <ul class="quick-actions">
+        <li><i class="fas fa-plus"></i> إضافة معاملة</li>
+        <li><i class="fas fa-wallet"></i> إنشاء ميزانية</li>
+        <li><i class="fas fa-piggy-bank"></i> تتبع المدخرات</li>
+      </ul>
+    </section>
+
+    <section class="main-content">
+      <div class="main-content-cards">
+        <h1>مرحبًا بك في مدبّر</h1>
+        <p>إدارة أموالك بذكاء وسهولة</p>
+        <div class="dashboard-cards">
+          <div class="card">
+            <h3>الرصيد الحالي</h3>
+            <p>5,000 جنيه</p>
+          </div>
+          <div class="card">
+            <h3>المصروفات هذا الشهر</h3>
+            <p>1,200 جنيه</p>
+          </div>
+          <div class="card">
+            <h3>المدخرات هذا الشهر</h3>
+            <p>800 جنيه</p>
+          </div>
+        </div>
+      </div>
+
+      <section class="dashboard-details">
+        <aside class="details-side">
+          <section class="latest-activities">
+            <div class="section-header">
+              <h2>الأنشطة الحديثة</h2>
+            </div>
+
+            <div class="activity-card activity-blue">
+              <div class="activity-text">
+                <i class="fas fa-user-plus"></i>
+                <h4>إنشاء حساب توفير جديد</h4>
+                <span>حساب</span>
+              </div>
+              <div class="content">
+                <p>تم إنشاء حساب توفيرك الأخير بنجاح</p>
+                <small>منذ ساعة واحدة</small>
+              </div>
+            </div>
+
+            <div class="activity-card activity-green">
+              <div class="activity-text">
+                <i class="fas fa-credit-card"></i>
+                <h4>إضافة بطاقة شخصية جديدة</h4>
+                <span>بطاقة</span>
+              </div>
+              <div class="content">
+                <p>تمت إضافة بطاقة Visa الجديدة ****2847</p>
+                <small>منذ 3 ساعات</small>
+              </div>
+            </div>
+            <a href="#" class="view-all-link">عرض جميع الأنشطة (23)</a>
+          </section>
+
+          <section class="monthly-invoices">
+            <div class="section-header">
+              <h2>الفواتير الشهرية</h2>
+              <a href="#">عرض الكل <i class="fas fa-chevron-left"></i></a>
+            </div>
+
+            <div class="invoice-total">
+              <h3>1920 جنيه</h3>
+              <p>إجمالي الفواتير الشهرية</p>
+            </div>
+
+            <div class="invoice-grid">
+              <article class="invoice-item">
+                <i class="fas fa-bolt"></i>
+                <h4>كهرباء</h4>
+                <p>400 جنيه</p>
+                <small>يستحق في 5 أيام</small>
+              </article>
+
+              <article class="invoice-item">
+                <i class="fas fa-wifi"></i>
+                <h4>إنترنت</h4>
+                <p>450 جنيه</p>
+                <small>يستحق في 3 أيام</small>
+              </article>
+
+              <article class="invoice-item">
+                <i class="fas fa-tv"></i>
+                <h4>Netflix</h4>
+                <p>780 جنيه</p>
+                <small>يستحق في 15 يوم</small>
+              </article>
+
+              <article class="invoice-item">
+                <i class="fas fa-phone"></i>
+                <h4>هاتف</h4>
+                <p>290 جنيه</p>
+                <small>يستحق في 9 أيام</small>
+              </article>
+            </div>
+          </section>
+        </aside>
+        <section class="latest-transactions">
+          <div class="section-header">
+            <h2>المعاملات الأخيرة</h2>
+            <a href="#">عرض الكل <i class="fas fa-chevron-left"></i></a>
+          </div>
+
+          <div class="transactions-table">
+            <div class="table-head table-row">
+              <span>المعاملة</span>
+              <span>الفئة</span>
+              <span>التاريخ</span>
+              <span>الحالة</span>
+              <span>المبلغ</span>
+            </div>
+
+            <div class="table-row">
+              <div class="transaction-info">
+                <img
+                  src="https://i.pravatar.cc/48?img=12"
+                  alt="صورة المستخدم"
+                />
+                <div>
+                  <h4>محمود النجار</h4>
+                  <p>تحويل أموال</p>
+                </div>
+              </div>
+              <span class="tag tag-income">دخل</span>
+              <span>14 أكتوبر 2025</span>
+              <span class="status status-done">مكتمل</span>
+              <span class="amount-positive">+350 جنيه</span>
+            </div>
+
+            <div class="table-row">
+              <div class="transaction-info">
+                <img
+                  src="https://i.pravatar.cc/48?img=18"
+                  alt="صورة المستخدم"
+                />
+                <div>
+                  <h4>مطعم Meat moot</h4>
+                  <p>دفع مطعم</p>
+                </div>
+              </div>
+              <span class="tag tag-food">طعام</span>
+              <span>14 أكتوبر 2025</span>
+              <span class="status status-done">مكتمل</span>
+              <span class="amount-negative">-2200 جنيه</span>
+            </div>
+
+            <div class="table-row">
+              <div class="transaction-info">
+                <img
+                  src="https://i.pravatar.cc/48?img=22"
+                  alt="صورة المستخدم"
+                />
+                <div>
+                  <h4>Amazon مشتريات</h4>
+                  <p>تسوق إلكتروني</p>
+                </div>
+              </div>
+              <span class="tag tag-shopping">تسوق</span>
+              <span>13 أكتوبر 2025</span>
+              <span class="status status-done">مكتمل</span>
+              <span class="amount-negative">-1250 جنيه</span>
+            </div>
+
+            <div class="table-row">
+              <div class="transaction-info">
+                <img
+                  src="https://i.pravatar.cc/48?img=30"
+                  alt="صورة المستخدم"
+                />
+                <div>
+                  <h4>عمر البدري</h4>
+                  <p>دفع فاتورة مقسمة</p>
+                </div>
+              </div>
+              <span class="tag tag-bill">فاتورة مقسمة</span>
+              <span>13 أكتوبر 2025</span>
+              <span class="status status-done">مكتمل</span>
+              <span class="amount-negative">-1400 جنيه</span>
+            </div>
+
+            <div class="table-row">
+              <div class="transaction-info">
+                <img
+                  src="https://i.pravatar.cc/48?img=52"
+                  alt="صورة المستخدم"
+                />
+                <div>
+                  <h4>محمد عوض</h4>
+                  <p>دفع عمل حر</p>
+                </div>
+              </div>
+              <span class="tag tag-work">عمل</span>
+              <span>12 أكتوبر 2025</span>
+              <span class="status status-done">مكتمل</span>
+              <span class="amount-positive">+2500 جنيه</span>
+            </div>
+          </div>
+        </section>
+      </section>
+    </section>
+  </body>
 </html>
