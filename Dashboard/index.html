@@ -332,26 +332,41 @@
           <section class="income-chart">
             <div class="section-header">
               <h3>الدخل مقابل المصروفات</h3>
+              <a href="#">التفاصيل <i class="fas fa-chevron-left"></i></a>
             </div>
+
+            <div class="chart-legend">
+              <span class="legend-item"><i class="legend-dot legend-income"></i> الدخل</span>
+              <span class="legend-item"><i class="legend-dot legend-expense"></i> المصروفات</span>
+            </div>
+
             <div class="mini-chart">
               <div class="chart-group">
-                <span class="bar bar-expense" style="height: 36px"></span>
-                <span class="bar bar-income" style="height: 58px"></span>
+                <div class="bars">
+                  <span class="bar bar-expense" style="height: 50px"></span>
+                  <span class="bar bar-income" style="height: 92px"></span>
+                </div>
                 <small>الأسبوع 1</small>
               </div>
               <div class="chart-group">
-                <span class="bar bar-expense" style="height: 30px"></span>
-                <span class="bar bar-income" style="height: 54px"></span>
+                <div class="bars">
+                  <span class="bar bar-expense" style="height: 56px"></span>
+                  <span class="bar bar-income" style="height: 98px"></span>
+                </div>
                 <small>الأسبوع 2</small>
               </div>
               <div class="chart-group">
-                <span class="bar bar-expense" style="height: 38px"></span>
-                <span class="bar bar-income" style="height: 60px"></span>
+                <div class="bars">
+                  <span class="bar bar-expense" style="height: 48px"></span>
+                  <span class="bar bar-income" style="height: 94px"></span>
+                </div>
                 <small>الأسبوع 3</small>
               </div>
               <div class="chart-group">
-                <span class="bar bar-expense" style="height: 34px"></span>
-                <span class="bar bar-income" style="height: 56px"></span>
+                <div class="bars">
+                  <span class="bar bar-expense" style="height: 54px"></span>
+                  <span class="bar bar-income" style="height: 100px"></span>
+                </div>
                 <small>الأسبوع 4</small>
               </div>
             </div>
@@ -359,31 +374,56 @@
 
           <section class="accounts-panel">
             <div class="section-header">
-              <h3>الحسابات الرئيسية</h3>
+              <h3>ملخص الحساب</h3>
+              <a href="#">التفاصيل <i class="fas fa-chevron-left"></i></a>
             </div>
 
             <article class="account-row">
-              <div>
-                <h4>الحساب البنكي</h4>
-                <p>رصيد جاري</p>
+              <div class="account-main">
+                <div class="account-icon account-icon-bank">
+                  <i class="fas fa-landmark"></i>
+                </div>
+                <div>
+                  <h4>حساب جاري</h4>
+                  <p>بنك مصر [•••• 4532]</p>
+                </div>
               </div>
-              <span>8,450 جنيه</span>
+              <div class="account-balance">
+                <span>8,450</span>
+                <small>جنيه</small>
+              </div>
             </article>
 
             <article class="account-row">
-              <div>
-                <h4>حساب التوفير</h4>
-                <p>صندوق احتياطي</p>
+              <div class="account-main">
+                <div class="account-icon account-icon-savings">
+                  <i class="fas fa-piggy-bank"></i>
+                </div>
+                <div>
+                  <h4>حساب التوفير</h4>
+                  <p>بنك مصر [•••• 8901]</p>
+                </div>
               </div>
-              <span>297,540 جنيه</span>
+              <div class="account-balance">
+                <span>297,540</span>
+                <small>جنيه</small>
+              </div>
             </article>
 
             <article class="account-row">
-              <div>
-                <h4>بطاقات الائتمان</h4>
-                <p>مدفوعات مستحقة</p>
+              <div class="account-main">
+                <div class="account-icon account-icon-credit">
+                  <i class="fas fa-credit-card"></i>
+                </div>
+                <div>
+                  <h4>بطاقة ائتمان</h4>
+                  <p>متاح: 1,850 جنيه من 2,500 جنيه</p>
+                </div>
               </div>
-              <span class="account-negative">-6,000 جنيه</span>
+              <div class="account-balance account-negative">
+                <span>- 6,000</span>
+                <small>جنيه</small>
+              </div>
             </article>
           </section>
         </section>
