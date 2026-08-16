@@ -94,7 +94,7 @@
             <li>
               <a
                 class="nav-link flex items-center gap-3 px-3 py-2.5 bg-emerald-50 text-emerald-700 rounded-lg transition-all"
-                href="#"
+                href="?page=home"
               >
                 <i class="fa-solid fa-utensils w-5"></i>
                 <span class="font-semibold">Meals & Recipes</span>
@@ -103,7 +103,7 @@
             <li>
               <a
                 class="nav-link flex items-center gap-3 px-3 py-2.5 text-gray-600 hover:bg-gray-50 rounded-lg transition-all"
-                href="#"
+                href="?page=product-scanner"
               >
                 <i class="fa-solid fa-barcode w-5"></i>
                 <span class="font-medium">Product Scanner</span>
@@ -112,7 +112,7 @@
             <li>
               <a
                 class="nav-link flex items-center gap-3 px-3 py-2.5 text-gray-600 hover:bg-gray-50 rounded-lg transition-all"
-                href="#"
+                href="?page=food-log"
               >
                 <i class="fa-solid fa-clipboard-list w-5"></i>
                 <span class="font-medium">Food Log</span>
@@ -139,6 +139,7 @@
     </div>
 
     <div id="main-content" class="ml-72">
+      <section data-page="home">
       <header
         id="header"
         class="bg-white border-b border-gray-200 sticky top-0 z-30"
@@ -192,6 +193,7 @@
         </div>
       </section>
 
+
       <section id="meal-categories-section" class="px-8 py-6 bg-white">
         <div>
           <div class="flex items-center justify-between mb-4">
@@ -223,7 +225,6 @@
             <div>
               <h2 class="text-2xl font-bold text-gray-900">All Recipes</h2>
               <p id="recipes-count" class="text-sm text-gray-600 mt-1">
-                Showing 25 recipes
               </p>
             </div>
             <div class="flex items-center gap-3">
@@ -251,6 +252,9 @@
         </div>
       </section>
 
+
+
+          
       <section id="meal-details" class="px-8 py-8 bg-gray-50">
         <div class="max-w-7xl mx-auto">
           <!-- Back Button -->
@@ -686,9 +690,10 @@
           </div>
         </div>
       </section>
+    </section>
 
       <!-- ============= PRODUCT SCANNER SECTION ============= -->
-      <section id="products-section" class="px-8 py-8 bg-gray-50 min-h-screen">
+      <section id="products-section" class="px-8 py-8 bg-gray-50 min-h-screen" data-page="product-scanner">
         <div class="max-w-7xl mx-auto">
           <!-- Search Header -->
           <div
@@ -924,7 +929,7 @@
       </section>
 
       <!-- ============= FOOD LOG SECTION ============= -->
-      <section id="foodlog-section" class="px-8 py-8 bg-gray-50 min-h-screen">
+      <section id="foodlog-section" class="px-8 py-8 bg-gray-50 min-h-screen" data-page="food-log">
         <div class="max-w-7xl mx-auto">
           <!-- Page Header -->
           <div
