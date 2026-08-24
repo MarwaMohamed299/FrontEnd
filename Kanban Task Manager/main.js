@@ -25,6 +25,9 @@ const dueDateInput = document.getElementById("task-date");
 const prioritySelect = document.getElementById("task-priority");
 const descriptionInput = document.getElementById("task-description");
 const saveButton = document.getElementById("save-task");
+const modalTitle = document.getElementById("modal-title");
+const newTaskButton = document.getElementById("new-task");
+let editingTaskKey = null;
 function saveToLocalStorage(key, value) {
     const serializedValue = JSON.stringify(value);
     localStorage.setItem(key, serializedValue);
@@ -50,16 +53,29 @@ function loadFromLocalStorage(key) {
     return tasks;
 }
 saveButton.addEventListener("click", () => {
-    console.log("Creating task...");
-    const newTask = new task();
-    newTask.id = Math.floor(Math.random() * 1000000);
-    newTask.title = titleInput.value;
-    newTask.dueDate = new Date(dueDateInput.value);
-    newTask.priority = prioritySelect.value;
-    newTask.description = descriptionInput.value;
-    newTask.status = status.todo;
-    console.log(newTask);
-    createTask(newTask);
+    if (editingTaskKey) {
+        const savedTasks = loadFromLocalStorage(editingTaskKey);
+        if (!savedTasks)
+            return;
+        const savedTask = savedTasks[editingTaskKey];
+        savedTask.title = titleInput.value;
+        savedTask.dueDate = new Date(dueDateInput.value);
+        savedTask.priority = prioritySelect.value;
+        savedTask.description = descriptionInput.value;
+        saveToLocalStorage(editingTaskKey, savedTask);
+    }
+    else {
+        console.log("Creating task...");
+        const newTask = new task();
+        newTask.id = Math.floor(Math.random() * 1000000);
+        newTask.title = titleInput.value;
+        newTask.dueDate = new Date(dueDateInput.value);
+        newTask.priority = prioritySelect.value;
+        newTask.description = descriptionInput.value;
+        newTask.status = status.todo;
+        console.log(newTask);
+        createTask(newTask);
+    }
 });
 function createTask(task) {
     console.log("Creating task:", task.title, task.dueDate, task.priority, task.description);
@@ -73,11 +89,26 @@ function deleteTask(key) {
 window.deleteTask = deleteTask;
 function editTask(key) {
     console.log("Editing task with key:", key);
-    loadFromLocalStorage(key);
-    const savedTasks = loadFromLocalStorage(null);
+    const savedTasks = loadFromLocalStorage(key);
     if (!savedTasks)
         return;
+    const savedTask = savedTasks[key];
+    editingTaskKey = key;
+    titleInput.value = savedTask.title;
+    dueDateInput.value = new Date(savedTask.dueDate).toISOString().split("T")[0];
+    prioritySelect.value = savedTask.priority;
+    descriptionInput.value = savedTask.description;
+    modalTitle.innerText = "Edit task";
+    saveButton.innerText = "Save changes";
 }
+window.editTask = editTask;
+function resetTaskModal() {
+    editingTaskKey = null;
+    document.getElementById("task-form").reset();
+    modalTitle.innerText = "Create task";
+    saveButton.innerText = "Create task";
+}
+newTaskButton.addEventListener("click", resetTaskModal);
 function loadTasks() {
     loadFromLocalStorage(null);
 }
@@ -100,6 +131,21 @@ function displayTasks(tasks, selectedStatus) {
             continue;
         tasksContainer += `
       <article class="task-card">
+        <div class="task-top">
+          <span></span>
+          <div class="card-menu">
+            <button class="icon-button edit-button" data-bs-toggle="modal"
+            data-bs-target="#taskModal" onclick="editTask('${currentTask.id}')"
+            title="Edit task" aria-label="Edit task">
+              <i class="fa-solid fa-pen-to-square"></i>
+            </button>
+            <button class="icon-button delete" onclick="deleteTask('${currentTask.id}')"
+            title="Delete task" aria-label="Delete task">
+              <i class="fa-solid fa-trash-can"></i>
+            </button>
+          </div>
+        </div>
+
         <h3>${currentTask.title}</h3>
 
         <p class="description">
@@ -127,17 +173,10 @@ function displayTasks(tasks, selectedStatus) {
 
 
         <button class="btn btn-info" onclick="startTask('${currentTask.id}')">
-        start
+        <i class="fa-solid fa-play"></i> start
         </button>
         <button class="btn btn-white" onclick="finishTask('${currentTask.id}')">
-        Finish
-        </button>
-         <button class="edit-button btn btn-warning" data-bs-toggle="modal"
-        data-bs-target="#taskModal" onclick="editTask('${currentTask.id}')">
-        Edit
-        </button>
-        <button class="delete-button btn btn-danger" onclick="deleteTask('${currentTask.id}')">
-        Delete
+        <i class="fa-solid fa-check"></i> Finish
         </button>
 
       </article>

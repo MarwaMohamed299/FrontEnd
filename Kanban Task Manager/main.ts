@@ -30,6 +30,9 @@ const descriptionInput = document.getElementById(
   "task-description",
 ) as HTMLTextAreaElement;
 const saveButton = document.getElementById("save-task") as HTMLButtonElement;
+const modalTitle = document.getElementById("modal-title") as HTMLHeadingElement;
+const newTaskButton = document.getElementById("new-task") as HTMLButtonElement;
+let editingTaskKey: string | null = null;
 
 function saveToLocalStorage<T>(key: string, value: T): void {
   const serializedValue = JSON.stringify(value);
@@ -58,6 +61,17 @@ function loadFromLocalStorage<T>(key: string | null): Record<string, T> | null {
   return tasks;
 }
 saveButton.addEventListener("click", () => {
+  if (editingTaskKey) {
+    const savedTasks = loadFromLocalStorage<task>(editingTaskKey);
+    if (!savedTasks) return;
+
+    const savedTask = savedTasks[editingTaskKey];
+    savedTask.title = titleInput.value;
+    savedTask.dueDate = new Date(dueDateInput.value);
+    savedTask.priority = prioritySelect.value as priority;
+    savedTask.description = descriptionInput.value;
+    saveToLocalStorage(editingTaskKey, savedTask);
+  } else {
   console.log("Creating task...");
   const newTask = new task();
   newTask.id = Math.floor(Math.random() * 1000000);
@@ -68,6 +82,7 @@ saveButton.addEventListener("click", () => {
   newTask.status = status.todo;
   console.log(newTask);
   createTask(newTask);
+  }
 });
 
 function createTask(task: task) {
@@ -90,11 +105,28 @@ function deleteTask(key: string) {
 (window as any).deleteTask = deleteTask;
 
 function editTask(key: string) {
-    console.log("Editing task with key:", key);
-    loadFromLocalStorage(key);
-  const savedTasks = loadFromLocalStorage<task>(null);
+  console.log("Editing task with key:", key);
+  const savedTasks = loadFromLocalStorage<task>(key);
   if (!savedTasks) return;
+
+  const savedTask = savedTasks[key];
+  editingTaskKey = key;
+  titleInput.value = savedTask.title;
+  dueDateInput.value = new Date(savedTask.dueDate).toISOString().split("T")[0];
+  prioritySelect.value = savedTask.priority;
+  descriptionInput.value = savedTask.description;
+  modalTitle.innerText = "Edit task";
+  saveButton.innerText = "Save changes";
 }
+(window as any).editTask = editTask;
+
+function resetTaskModal() {
+  editingTaskKey = null;
+  (document.getElementById("task-form") as HTMLFormElement).reset();
+  modalTitle.innerText = "Create task";
+  saveButton.innerText = "Create task";
+}
+newTaskButton.addEventListener("click", resetTaskModal);
 
 function loadTasks() {
   loadFromLocalStorage(null);
@@ -124,6 +156,21 @@ function displayTasks(tasks: task[], selectedStatus: status): string {
 
     tasksContainer += `
       <article class="task-card">
+        <div class="task-top">
+          <span></span>
+          <div class="card-menu">
+            <button class="icon-button edit-button" data-bs-toggle="modal"
+            data-bs-target="#taskModal" onclick="editTask('${currentTask.id}')"
+            title="Edit task" aria-label="Edit task">
+              <i class="fa-solid fa-pen-to-square"></i>
+            </button>
+            <button class="icon-button delete" onclick="deleteTask('${currentTask.id}')"
+            title="Delete task" aria-label="Delete task">
+              <i class="fa-solid fa-trash-can"></i>
+            </button>
+          </div>
+        </div>
+
         <h3>${currentTask.title}</h3>
 
         <p class="description">
@@ -151,17 +198,10 @@ function displayTasks(tasks: task[], selectedStatus: status): string {
 
 
         <button class="btn btn-info" onclick="startTask('${currentTask.id}')">
-        start
+        <i class="fa-solid fa-play"></i> start
         </button>
         <button class="btn btn-white" onclick="finishTask('${currentTask.id}')">
-        Finish
-        </button>
-         <button class="edit-button btn btn-warning" data-bs-toggle="modal"
-        data-bs-target="#taskModal" onclick="editTask('${currentTask.id}')">
-        Edit
-        </button>
-        <button class="delete-button btn btn-danger" onclick="deleteTask('${currentTask.id}')">
-        Delete
+        <i class="fa-solid fa-check"></i> Finish
         </button>
 
       </article>
