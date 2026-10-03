@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+
 export default function Navbar() {
   return (
    <nav className="navbar navbar-expand-lg bg-dark navbar-dark">
@@ -20,6 +21,11 @@ export default function Navbar() {
         <li className="nav-item">
           <Link className="nav-link" to={"/about"}>
             About
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link className="nav-link" to={"/settings"}>
+            Settings
           </Link>
         </li>
         </ul>
