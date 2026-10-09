@@ -1,9 +1,15 @@
-import { Link, Outlet } from "react-router-dom";
-import { useState } from "react";
+import { Link, Outlet, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
 import AppIntro from "../../components/AppIntro/AppIntro";
 
 export default function AuthLayOut() {
   const [mode, setMode] = useState("/auth/login");
+  let {pathname} = useLocation();
+  useEffect(()=>{
+    if(pathname === "/auth/login" || pathname === "/auth/register"){
+      setMode(pathname)
+    }
+  }, [pathname]);
 
   return (
     <main className="min-h-screen bg-primary-light px-4 py-8 sm:py-12 lg:flex lg:items-center">
