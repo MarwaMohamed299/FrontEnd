@@ -3,7 +3,6 @@ import heroImg from './assets/hero.png'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import './App.css'
-import { Router } from 'react-router-dom'
 import { RouterProvider } from 'react-router-dom'
 import { router } from './routes/AppRoutes'
 
