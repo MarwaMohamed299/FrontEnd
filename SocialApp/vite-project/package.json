@@ -14,8 +14,10 @@
     "@heroui/react": "^3.2.6",
     "@heroui/styles": "^3.2.6",
     "bootstrap": "^5.3.8",
+    "formik": "^2.4.9",
     "react": "^19.3.0",
     "react-dom": "^19.2.8",
+    "react-hook-form": "^7.90.0",
     "react-router-dom": "^7.18.4",
     "tailwind": "^4.0.0"
   },
