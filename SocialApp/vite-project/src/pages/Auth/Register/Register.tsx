@@ -1,6 +1,8 @@
 import { Input } from "@heroui/react";
 import { Button, Radio, RadioGroup } from "@heroui/react";
-import { get, useForm } from "react-hook-form";
+import {  useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { registerSchema } from "../../../schema/register";
 type RegisterFormValues = {
   name: string;
   username: string;
@@ -14,10 +16,7 @@ export default function Register() {
   const {
     register,
     handleSubmit,
-    setError,
-    getValues,
-    watch,
-    formState: { errors, isValid  },
+    formState: { errors  },
   } = useForm<RegisterFormValues>({
     mode: 'onChange',
     defaultValues: {
@@ -28,6 +27,7 @@ export default function Register() {
       confirmPassword: '',
       dateOfBirth: '',
     },
+    resolver : zodResolver(registerSchema),
   });
   return (
     <div>
@@ -41,13 +41,7 @@ export default function Register() {
       >
         <Input
           {...register("name", {
-            required: {
-              value: true,
-              message:
-                "Name must be at least 2 characters long and not exceed 30 characters.",
-            },
-            minLength: { value: 2, message: "Name must be at least 2 characters long." },
-            maxLength: { value: 30, message: "Name must not exceed 30 characters." },
+            
           })}
           fullWidth
           aria-label="Name"
@@ -57,13 +51,7 @@ export default function Register() {
         {errors.name && <p className="text-red-500">{errors.name?.message}</p>}
         <Input
           {...register("username", {
-            required: {
-              value: true,
-              message:
-                "Username must be at least 2 characters long and not exceed 30 characters.",
-            },
-            minLength: { value: 2, message: "Username must be at least 2 characters long." },
-            maxLength: { value: 30, message: "Username must not exceed 30 characters." },
+            
           })}
           fullWidth
           aria-label="Username"
@@ -75,11 +63,7 @@ export default function Register() {
         )}
         <Input
           {...register("email", {
-            required:  "Email is required.",
-            pattern: {
-              value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/i,
-              message: "Email must be a valid email address.",
-            },
+           
           })}
           fullWidth
           aria-label="Email"
@@ -91,14 +75,7 @@ export default function Register() {
         )}
         <Input
           {...register("password", {
-            required: {
-              value: true,
-              message: "Password is required.",
-            },
-            pattern: {
-              value: /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/,
-              message: "Password must be at least 8 characters long and include uppercase, lowercase, a number, and a special character.",
-            },
+           
           })}
           fullWidth
           aria-label="Password"
@@ -110,17 +87,7 @@ export default function Register() {
         )}
         <Input
           {...register("confirmPassword", {
-            required: {
-              value: true,
-              message: "Please confirm your password.",
-            },
-            pattern: {
-              value: /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/,
-              message: "Password must be at least 8 characters long and include uppercase, lowercase, a number, and a special character.",
-            },
-            validate: (value) => {
-              return watch("password") === value || "Passwords do not match.";
-            }
+           
           })}
           fullWidth
           aria-label="Confirm Password"
@@ -132,12 +99,8 @@ export default function Register() {
         )}
         <Input
           {...register("dateOfBirth",{
-            required: "Date of Birth is required.",
-            validate: function(value){
-             const currYear = new Date().getFullYear();
-             const userYear = new Date(value).getFullYear();
-             return currYear - userYear >= 16 ? true : 'Your age is less than 16'
-            }
+            
+            
           })}
           fullWidth
           type="date"
@@ -169,7 +132,7 @@ export default function Register() {
             </Radio>
           </RadioGroup>
         </div>
-        <Button isDisabled={!isValid} type="submit" fullWidth>
+        <Button  type="submit" fullWidth>
           Save
         </Button>
       </form>
