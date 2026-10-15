@@ -1,6 +1,6 @@
 import { Input } from "@heroui/react";
 import { Button, Radio, RadioGroup } from "@heroui/react";
-import { useForm } from "react-hook-form";
+import { get, useForm } from "react-hook-form";
 type RegisterFormValues = {
   name: string;
   username: string;
@@ -14,9 +14,20 @@ export default function Register() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    setError,
+    getValues,
+    watch,
+    formState: { errors, isValid  },
   } = useForm<RegisterFormValues>({
     mode: 'onChange',
+    defaultValues: {
+      name: '',
+      username: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
+      dateOfBirth: '',
+    },
   });
   return (
     <div>
@@ -64,10 +75,7 @@ export default function Register() {
         )}
         <Input
           {...register("email", {
-            required: {
-              value: true,
-              message: "Email must be a valid email address.",
-            },
+            required:  "Email is required.",
             pattern: {
               value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/i,
               message: "Email must be a valid email address.",
@@ -110,6 +118,9 @@ export default function Register() {
               value: /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/,
               message: "Password must be at least 8 characters long and include uppercase, lowercase, a number, and a special character.",
             },
+            validate: (value) => {
+              return watch("password") === value || "Passwords do not match.";
+            }
           })}
           fullWidth
           aria-label="Confirm Password"
@@ -158,7 +169,7 @@ export default function Register() {
             </Radio>
           </RadioGroup>
         </div>
-        <Button type="submit" fullWidth>
+        <Button isDisabled={!isValid} type="submit" fullWidth>
           Save
         </Button>
       </form>
