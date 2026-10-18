@@ -5,6 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { registerSchema } from "../../../schema/register";
 import axios, { isAxiosError } from "axios";
 import { LineWave } from "react-loader-spinner";
+import { useNavigate } from "react-router-dom";
 type RegisterFormValues = {
   name: string;
   username: string;
@@ -34,13 +35,16 @@ export default function Register() {
     },
     resolver: zodResolver(registerSchema),
   });
-
+const navigate = useNavigate();
   async function onSubmit(data: RegisterFormValues) {
     if(isSubmitting) return;
     try {
       await axios.post(`https://route-posts.routemisr.com/users/signup`, data);
       console.log(data);
       toast.success("Account created successfully!");
+      setTimeout(() => {
+        navigate("/Auth/login");
+      }, 2000);
     } catch (error) {
       if(isAxiosError(error) && error.response) {
         const errorMessage = error.response.data.message || "Failed to create account.";

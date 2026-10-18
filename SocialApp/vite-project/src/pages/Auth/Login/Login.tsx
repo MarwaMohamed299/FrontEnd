@@ -4,6 +4,7 @@ import axios, { isAxiosError } from "axios";
 import { useForm } from "react-hook-form";
 import { LineWave } from "react-loader-spinner";
 import { loginSchema } from "../../../schema/login";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
 type RegisterFormValues = {
@@ -12,7 +13,6 @@ type RegisterFormValues = {
 };
   const {
     register,
-    control,
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm<RegisterFormValues>({
@@ -25,13 +25,18 @@ type RegisterFormValues = {
     },
     resolver: zodResolver(loginSchema),
   });
-
+  let navigate = useNavigate();
   async function onSubmit(data: RegisterFormValues) {
     if(isSubmitting) return;
     try {
       await axios.post(`https://route-posts.routemisr.com/users/signin`, data);
       console.log(data);
       toast.success("Logged in successfully!");
+      setTimeout(() =>{
+
+            navigate("/home");
+      },1000)
+
     } catch (error) {
       if(isAxiosError(error) && error.response) {
         const errorMessage = error.response.data.message || "Failed to login.";
@@ -79,7 +84,7 @@ type RegisterFormValues = {
                 color="currentColor"
                 ariaLabel="Creating account"
               />
-              Creating account…
+              Logging in...
             </>
           ) : (
             "Save"
