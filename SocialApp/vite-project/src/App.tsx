@@ -1,15 +1,13 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
 import './App.css'
 import { RouterProvider } from 'react-router-dom'
 import { router } from './routes/AppRoutes'
+import { Toast } from '@heroui/react'
 
 function App() {
 
   return (
     <>
+      <Toast.Provider placement="top" />
       <RouterProvider router={router}></RouterProvider>
     </>
   )

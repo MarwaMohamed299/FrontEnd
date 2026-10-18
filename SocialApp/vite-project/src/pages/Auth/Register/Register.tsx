@@ -1,9 +1,9 @@
-import { Input } from "@heroui/react";
+import { Input, toast } from "@heroui/react";
 import { Button, Radio, RadioGroup } from "@heroui/react";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { registerSchema } from "../../../schema/register";
-import axios from "axios";
+import axios, { isAxiosError } from "axios";
 import { LineWave } from "react-loader-spinner";
 type RegisterFormValues = {
   name: string;
@@ -36,12 +36,16 @@ export default function Register() {
   });
 
   async function onSubmit(data: RegisterFormValues) {
-    console.log(data);
     if(isSubmitting) return;
     try {
       await axios.post(`https://route-posts.routemisr.com/users/signup`, data);
+      console.log(data);
+      toast.success("Account created successfully!");
     } catch (error) {
-      console.error(error);
+      if(isAxiosError(error) && error.response) {
+        const errorMessage = error.response.data.message || "Failed to create account.";
+        toast.danger(errorMessage);
+      }
     }
   }
 
