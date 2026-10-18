@@ -37,6 +37,7 @@ export default function Register() {
 
   async function onSubmit(data: RegisterFormValues) {
     console.log(data);
+    if(isSubmitting) return;
     try {
       await axios.post(`https://route-posts.routemisr.com/users/signup`, data);
     } catch (error) {
