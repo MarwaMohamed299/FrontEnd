@@ -19,7 +19,7 @@ export default function Login() {
     defaultValues: {
   
       email: "",
-      password: "",
+      password: "", 
       
     },
     resolver: zodResolver(loginSchema),
