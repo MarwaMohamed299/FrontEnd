@@ -4,10 +4,9 @@ import axios, { isAxiosError } from "axios";
 import { useForm } from "react-hook-form";
 import { LineWave } from "react-loader-spinner";
 import { loginSchema } from "../../../schema/login";
-import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
-import { CounterContext } from "../../../context/CounterContext";
 import { AuthContext } from "../../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
 type LoginFormValues = {
@@ -38,7 +37,7 @@ type LoginFormValues = {
       toast.success("Logged in successfully!");
       setTimeout(() =>{
 
-           // navigate("/");
+        navigate("/");
       },1000)
 
     } catch (error) {

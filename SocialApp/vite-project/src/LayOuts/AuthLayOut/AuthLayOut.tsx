@@ -1,7 +1,6 @@
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import AppIntro from "../../components/AppIntro/AppIntro";
-import NavBar from "../../components/LayOut/NavBar/NavBar";
 
 export default function AuthLayOut() {
   const [mode, setMode] = useState("/auth/login");
@@ -17,7 +16,6 @@ export default function AuthLayOut() {
       <div className="mx-auto flex w-full max-w-6xl flex-col-reverse items-center gap-6 sm:gap-8 lg:flex-row lg:items-center lg:justify-between lg:gap-12">
         
        <AppIntro />
-        <NavBar/>
         <section className="w-full max-w-[430px]">
           <div className="rounded-2xl bg-white p-4 sm:p-6 shadow-sm border border-gray-100">
 
