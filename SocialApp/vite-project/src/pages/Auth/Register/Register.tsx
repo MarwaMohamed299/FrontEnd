@@ -6,15 +6,7 @@ import { registerSchema } from "../../../schema/register";
 import axios, { isAxiosError } from "axios";
 import { LineWave } from "react-loader-spinner";
 import { useNavigate } from "react-router-dom";
-type RegisterFormValues = {
-  name: string;
-  username: string;
-  email: string;
-  password: string;
-  rePassword: string;
-  dateOfBirth: string;
-  gender: "male" | "female";
-};
+import type { RegisterFormValues } from "../../../types/auth";
 
 export default function Register() {
   const {
