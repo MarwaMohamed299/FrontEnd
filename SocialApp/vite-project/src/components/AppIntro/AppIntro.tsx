@@ -1,4 +1,3 @@
-import React from 'react';
 
 const statsData = [
   { id: 1, value: "2002", label: "Movie Released", colClass: "col-span-4" },

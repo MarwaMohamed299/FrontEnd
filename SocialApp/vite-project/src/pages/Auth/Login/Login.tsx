@@ -5,9 +5,12 @@ import { useForm } from "react-hook-form";
 import { LineWave } from "react-loader-spinner";
 import { loginSchema } from "../../../schema/login";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { CounterContext } from "../../../context/CounterContext";
+import { AuthContext } from "../../../context/AuthContext";
 
 export default function Login() {
-type RegisterFormValues = {
+type LoginFormValues = {
   email: string;
   password: string;
 };
@@ -15,7 +18,7 @@ type RegisterFormValues = {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-  } = useForm<RegisterFormValues>({
+  } = useForm<LoginFormValues>({
     mode: "onChange",
     defaultValues: {
   
@@ -25,36 +28,37 @@ type RegisterFormValues = {
     },
     resolver: zodResolver(loginSchema),
   });
+
+  let{updateToken} = useContext(AuthContext);
   let navigate = useNavigate();
-  async function onSubmit(data: RegisterFormValues) {
-    if(isSubmitting) return;
+  async function onSubmit(loginData: LoginFormValues) {
     try {
-      await axios.post(`https://route-posts.routemisr.com/users/signin`, data);
-      console.log(data);
+      let {data}=await axios.post(`https://route-posts.routemisr.com/users/signin`, loginData);
+      updateToken(data.data.token)
       toast.success("Logged in successfully!");
       setTimeout(() =>{
 
-            navigate("/home");
+           // navigate("/");
       },1000)
 
     } catch (error) {
       if(isAxiosError(error) && error.response) {
         const errorMessage = error.response.data.message || "Failed to login.";
         toast.danger(errorMessage);
+      } else {
+        toast.danger("Unable to log in. Please check your connection and try again.");
       }
     }
   }
 
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-4">Create Account</h1>
+      <h1 className="text-2xl font-bold mb-4">Log in</h1>
       <p className="text-gray-600 mb-4">
-        Please fill in the information below to create your account.
+        Enter your email and password to log in.
       </p>
       <form className="space-y-5" onSubmit={handleSubmit(onSubmit)}>
-       
-       
-        <Input
+               <Input
           {...register("email", {})}
           fullWidth
           aria-label="Email"
@@ -82,12 +86,12 @@ type RegisterFormValues = {
                 height={32}
                 width={32}
                 color="currentColor"
-                ariaLabel="Creating account"
+                ariaLabel="Logging in"
               />
               Logging in...
             </>
           ) : (
-            "Save"
+            "Log in"
           )}
         </Button>
       </form>

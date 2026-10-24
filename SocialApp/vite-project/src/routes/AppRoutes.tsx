@@ -6,14 +6,15 @@ import Register from "../pages/Auth/Register/Register";
 import MainLayOut from "../LayOuts/MainLayOut/MainLayOut";
 import Feed from "../pages/Feed/Feed";
 import Profile from "../pages/Profile/Profile";
+import ProtectedRoutes from "../components/ProtextedRoutes/ProtectedRoutes";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayOut />,
     children: [
-      { index:true, element: <Feed /> },
-      { path: "profile", element: <Profile /> },
+      { index:true, element:  <ProtectedRoutes><Feed/></ProtectedRoutes> },
+      { path: "profile", element:<ProtectedRoutes><Profile/></ProtectedRoutes> },
       { path: "*", element: <NotFound /> },
     ],
   },
