@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { HiOutlineChatBubbleOvalLeft, HiOutlineGlobeAlt, HiOutlineHeart } from "react-icons/hi2";
 import type { Post } from "../../types/post";
+import TopComment from "./TopComment";
 
 
 export default function PostCard({ post }: { post: Post }) {
@@ -72,6 +73,7 @@ export default function PostCard({ post }: { post: Post }) {
           {comments.toLocaleString()} {comments === 1 ? "comment" : "comments"}
         </span>
       </footer>
+      {post.topComment && <TopComment key={post.topComment._id} comment={post.topComment} />}
     </article>
   );
 }
