@@ -2,16 +2,10 @@ import { useState } from "react";
 import { HiOutlineChatBubbleOvalLeft, HiOutlineGlobeAlt, HiOutlineHeart } from "react-icons/hi2";
 import type { Post } from "../../types/post";
 
-const dateFormat = new Intl.DateTimeFormat("en", {
-  month: "short",
-  day: "numeric",
-  year: "numeric",
-});
 
 export default function PostCard({ post }: { post: Post }) {
   const [avatarFailed, setAvatarFailed] = useState(false);
   const [imageFailed, setImageFailed] = useState(false);
-  const createdAt = new Date(post.createdAt);
   const initials = post.user.name.trim().split(/\s+/).slice(0, 2).map((name) => name[0]).join("");
   const likes = post.likes?.length ?? 0;
   const comments = post.commentsCount ?? 0;
@@ -34,9 +28,11 @@ export default function PostCard({ post }: { post: Post }) {
         <div className="min-w-0">
           <h2 className="truncate text-sm font-bold text-slate-900 sm:text-base">{post.user.name}</h2>
           <div className="mt-1 flex items-center gap-1.5 text-xs text-slate-500">
-            {!Number.isNaN(createdAt.getTime()) && (
-              <time dateTime={post.createdAt}>{dateFormat.format(createdAt)}</time>
-            )}
+           <span className="text-grey-600" >{new Date(post.createdAt).toLocaleDateString('en-us',{
+            year:'numeric',
+            month:'short',
+            day:'numeric'
+           })}</span>
             <span aria-hidden="true">·</span>
             <HiOutlineGlobeAlt className="size-3.5" aria-hidden="true" />
             <span>Public</span>
